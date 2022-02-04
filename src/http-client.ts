@@ -48,6 +48,7 @@ export class HttpClient {
 
     // Apply url search params
     for (const [key, value] of Object.entries(options.searchParams ?? {})) {
+      if (typeof value !== 'string') continue
       url.searchParams.set(key, value)
     }
 
@@ -101,7 +102,7 @@ export interface HttpRequestOptions {
   jsonBody?: Record<string, any>
   formBody?: Record<string, string | number | boolean | null | undefined>
   body?: Buffer | Readable | string
-  searchParams?: Record<string, string>
+  searchParams?: Record<string, string | null | undefined>
   firstByteTimeout?: number
   requestTimeout?: number
   username?: string
