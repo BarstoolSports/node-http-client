@@ -58,6 +58,8 @@ class HttpClient {
         const url = new URL(options.basePath ? `${options.basePath}/${path}` : path);
         // Apply url search params
         for (const [key, value] of Object.entries(options.searchParams ?? {})) {
+            if (typeof value !== 'string')
+                continue;
             url.searchParams.set(key, value);
         }
         // Build http method

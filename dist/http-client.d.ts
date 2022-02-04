@@ -22,7 +22,7 @@ export interface HttpRequestOptions {
     jsonBody?: Record<string, any>;
     formBody?: Record<string, string | number | boolean | null | undefined>;
     body?: Buffer | Readable | string;
-    searchParams?: Record<string, string>;
+    searchParams?: Record<string, string | null | undefined>;
     firstByteTimeout?: number;
     requestTimeout?: number;
     username?: string;
