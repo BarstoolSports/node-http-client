@@ -1,7 +1,7 @@
 import { request, Dispatcher } from 'undici'
 import { IncomingHttpHeaders } from 'http'
 import { Readable } from 'stream'
-import merge from 'lodash/merge'
+import merge from 'lodash.merge'
 import * as querystring from 'querystring'
 
 export class HttpClient {

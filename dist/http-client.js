@@ -24,7 +24,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HttpRequestError = exports.httpClient = exports.HttpClient = void 0;
 const undici_1 = require("undici");
-const merge_1 = __importDefault(require("lodash/merge"));
+const lodash_merge_1 = __importDefault(require("lodash.merge"));
 const querystring = __importStar(require("querystring"));
 class HttpClient {
     constructor(options) {
@@ -53,7 +53,7 @@ class HttpClient {
     }
     async request(path, _options) {
         // Build combined optiond
-        const options = (0, merge_1.default)({}, this._options, _options);
+        const options = (0, lodash_merge_1.default)({}, this._options, _options);
         // Construct url
         const url = new URL(options.basePath ? `${options.basePath}/${path}` : path);
         // Apply url search params
