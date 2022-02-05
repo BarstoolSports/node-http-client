@@ -81,7 +81,7 @@ export class HttpClient {
       method,
       headers,
       body,
-      headersTimeout: options.firstByteTimeout,
+      headersTimeout: options.firstByteTimeout ?? options.requestTimeout,
       bodyTimeout: options.requestTimeout
     })
 
