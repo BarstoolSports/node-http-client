@@ -83,6 +83,7 @@ export class HttpClient {
       body,
       headersTimeout: options.firstByteTimeout ?? options.requestTimeout,
       bodyTimeout: options.requestTimeout,
+      idempotent: options.idempotent,
       maxRedirections: options.maxRedirections
     })
 
@@ -109,6 +110,7 @@ export interface HttpRequestOptions {
   username?: string
   password?: string
   maxRedirections?: number
+  idempotent?: boolean
 }
 
 export class HttpRequestError extends Error {

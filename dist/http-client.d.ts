@@ -28,6 +28,7 @@ export interface HttpRequestOptions {
     username?: string;
     password?: string;
     maxRedirections?: number;
+    idempotent?: boolean;
 }
 export declare class HttpRequestError extends Error {
     readonly statusCode: number;
