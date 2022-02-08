@@ -27,6 +27,7 @@ export interface HttpRequestOptions {
     requestTimeout?: number;
     username?: string;
     password?: string;
+    maxRedirections?: number;
 }
 export declare class HttpRequestError extends Error {
     readonly statusCode: number;

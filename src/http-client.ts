@@ -82,7 +82,8 @@ export class HttpClient {
       headers,
       body,
       headersTimeout: options.firstByteTimeout ?? options.requestTimeout,
-      bodyTimeout: options.requestTimeout
+      bodyTimeout: options.requestTimeout,
+      maxRedirections: options.maxRedirections
     })
 
     if (res.statusCode >= 400) {
@@ -107,6 +108,7 @@ export interface HttpRequestOptions {
   requestTimeout?: number
   username?: string
   password?: string
+  maxRedirections?: number
 }
 
 export class HttpRequestError extends Error {
