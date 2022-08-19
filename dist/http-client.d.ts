@@ -1,7 +1,8 @@
 /// <reference types="node" />
-import { Dispatcher } from 'undici';
+import { Dispatcher, ProxyAgent } from 'undici';
 import { IncomingHttpHeaders } from 'http';
 import { Readable } from 'stream';
+export { ProxyAgent };
 export declare class HttpClient {
     private _options;
     constructor(options?: HttpRequestOptions);
@@ -29,6 +30,7 @@ export interface HttpRequestOptions {
     password?: string;
     maxRedirections?: number;
     idempotent?: boolean;
+    proxyAgent?: ProxyAgent;
 }
 export declare class HttpRequestError extends Error {
     readonly statusCode: number;

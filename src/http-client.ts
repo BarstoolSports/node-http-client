@@ -1,8 +1,10 @@
-import { request, Dispatcher } from 'undici'
+import { request, Dispatcher, ProxyAgent } from 'undici'
 import { IncomingHttpHeaders } from 'http'
 import { Readable } from 'stream'
 import merge from 'lodash.merge'
 import * as querystring from 'querystring'
+
+export { ProxyAgent }
 
 export class HttpClient {
   private _options: HttpRequestOptions
@@ -84,7 +86,8 @@ export class HttpClient {
       headersTimeout: options.firstByteTimeout ?? options.requestTimeout,
       bodyTimeout: options.requestTimeout,
       idempotent: options.idempotent,
-      maxRedirections: options.maxRedirections
+      maxRedirections: options.maxRedirections,
+      dispatcher: options.proxyAgent
     })
 
     if (res.statusCode >= 400) {
@@ -111,6 +114,7 @@ export interface HttpRequestOptions {
   password?: string
   maxRedirections?: number
   idempotent?: boolean
+  proxyAgent?: ProxyAgent
 }
 
 export class HttpRequestError extends Error {
